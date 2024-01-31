@@ -141,9 +141,16 @@ function murderRandomAnimal() {
   const potentialVictims = animals.filter(animal => animal.isMurderer == false && animal.isAlive == true)
   console.log('potential victims:', potentialVictims);
 
+  if (potentialVictims.length == 0) {
+    window.alert('GAME OVER')
+    // NOTE hard stop
+    return
+  }
+
   const randomIndex = Math.floor(Math.random() * potentialVictims.length)
 
   const victim = potentialVictims[randomIndex]
+
   victim.isAlive = false
   console.log(victim);
 }

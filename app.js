@@ -182,7 +182,7 @@ function drawClueAboutMurderer() {
   // if (randomNumber == 4) {
   // }
 
-  const murderer = animals.find(animal => animal.isMurderer == true)
+  const murderer = findMurderer()
 
   let clue = ''
 
@@ -238,7 +238,7 @@ function murderRandomAnimal() {
 
   // TODO maybe refactor this
   if (potentialVictims.length == 1) {
-    const murderer = animals.find(animal => animal.isMurderer == true)
+    const murderer = findMurderer()
     window.alert(`${murderer.name} is a criminal mastermind, and they got away with it! ${murderer.emoji}`)
     // NOTE hard stop
     return
@@ -254,7 +254,7 @@ function accuseAnimalOfMurder() {
   const emojiOfAccusedAnimal = window.prompt("WHO DUNNIT?")
   console.log('you are accusing:', emojiOfAccusedAnimal);
 
-  const murderer = animals.find(animal => animal.isMurderer == true)
+  const murderer = findMurderer()
 
   console.log('the murderer:', murderer);
 
@@ -265,6 +265,11 @@ function accuseAnimalOfMurder() {
     murderRandomAnimal()
   }
 
+}
+
+function findMurderer() {
+  const foundMurderer = animals.find(animal => animal.isMurderer == true)
+  return foundMurderer
 }
 
 

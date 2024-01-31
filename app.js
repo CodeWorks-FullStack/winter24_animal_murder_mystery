@@ -144,8 +144,8 @@ function drawSuspects() {
 
   const animalLineupElement = document.getElementById('suspectLineup')
   animalLineupElement.innerText = animalEmojis
-
 }
+
 function drawVictims() {
   // NOTE create placeholder string
   let animalEmojis = ''

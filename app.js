@@ -178,6 +178,22 @@ function murderRandomAnimal() {
 
 function accuseAnimalOfMurder() {
   console.log('accusing!');
+
+  // TODO allow user to type name as well
+  const emojiOfAccusedAnimal = window.prompt("WHO DUNNIT?")
+  console.log('you are accusing:', emojiOfAccusedAnimal);
+
+  const murderer = animals.find(animal => animal.isMurderer == true)
+
+  console.log('the murderer:', murderer);
+
+  if (murderer.emoji == emojiOfAccusedAnimal) {
+    window.alert(`${murderer.name} ${murderer.emoji} is going to jail! You are the best detective we've ever seen! Here is your medal 🥇`)
+  }
+  else {
+    murderRandomAnimal()
+  }
+
 }
 
 // ANCHOR run on page load

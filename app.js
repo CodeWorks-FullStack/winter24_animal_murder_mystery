@@ -114,14 +114,25 @@ const animals = [
 
 
 function drawAnimals() {
+  drawSuspects()
+  drawVictims()
+}
+
+function drawSuspects() {
   // NOTE create placeholder string
   let animalEmojis = ''
 
-  // NOTE concat all animal emojis to placeholder string
-  animals.forEach(animal => animalEmojis += animal.emoji)
+  const animalSuspects = animals.filter(animal => animal.isAlive == true)
 
-  const animalLineupElement = document.getElementById('animalLineup')
+  // NOTE concat all animal emojis to placeholder string
+  animalSuspects.forEach(animal => animalEmojis += animal.emoji)
+
+  const animalLineupElement = document.getElementById('suspectLineup')
   animalLineupElement.innerText = animalEmojis
+
+}
+function drawVictims() {
+
 }
 
 function makeRandomAnimalMurderer() {
@@ -158,4 +169,5 @@ function murderRandomAnimal() {
 // ANCHOR run on page load
 
 makeRandomAnimalMurderer()
+murderRandomAnimal()
 drawAnimals()

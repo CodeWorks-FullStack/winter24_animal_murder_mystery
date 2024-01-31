@@ -164,59 +164,6 @@ function drawAnimals() {
   drawVictims()
 }
 
-function makeRandomAnimalMurderer() {
-  // NOTE finds a random number between -1 and the length of the animal array (should all be valid indexes to access within the array)
-  const randomIndex = Math.floor(Math.random() * animals.length)
-  // console.log('random number:', randomIndex);
-
-  // NOTE pulls random object out of array
-  const animalWithMurderousIntent = animals[randomIndex]
-  animalWithMurderousIntent.isMurderer = true
-  // console.log(animalWithMurderousIntent)
-}
-
-function murderRandomAnimal() {
-  // const potentialVictims = animals.filter(animal => !animal.isMurderer && animal.isAlive)
-  const potentialVictims = animals.filter(animal => animal.isMurderer == false && animal.isAlive == true)
-  console.log('potential victims:', potentialVictims);
-
-  // TODO maybe refactor this
-  if (potentialVictims.length == 0) {
-    window.alert('GAME OVER')
-    // NOTE hard stop
-    return
-  }
-
-  const randomIndex = Math.floor(Math.random() * potentialVictims.length)
-
-  const victim = potentialVictims[randomIndex]
-
-  victim.isAlive = false
-  console.log(victim);
-  drawAnimals()
-  drawClueAboutMurderer()
-}
-
-function accuseAnimalOfMurder() {
-  console.log('accusing!');
-
-  // TODO allow user to type name as well
-  const emojiOfAccusedAnimal = window.prompt("WHO DUNNIT?")
-  console.log('you are accusing:', emojiOfAccusedAnimal);
-
-  const murderer = animals.find(animal => animal.isMurderer == true)
-
-  console.log('the murderer:', murderer);
-
-  if (murderer.emoji == emojiOfAccusedAnimal) {
-    window.alert(`${murderer.name} ${murderer.emoji} is going to jail! You are the best detective we've ever seen! Here is your medal 🥇`)
-  }
-  else {
-    murderRandomAnimal()
-  }
-
-}
-
 function drawClueAboutMurderer() {
   // NOTE gets random number between 0-5 (1,2,3,4)
   // const randomNumber = Math.ceil(Math.random() * 4)
@@ -263,6 +210,64 @@ function drawClueAboutMurderer() {
   const clueElement = document.getElementById('murdererClues')
   clueElement.innerHTML += `<p>${clue}</p>`
 }
+
+function makeRandomAnimalMurderer() {
+  // NOTE finds a random number between -1 and the length of the animal array (should all be valid indexes to access within the array)
+  const randomIndex = Math.floor(Math.random() * animals.length)
+  // console.log('random number:', randomIndex);
+
+  // NOTE pulls random object out of array
+  const animalWithMurderousIntent = animals[randomIndex]
+  animalWithMurderousIntent.isMurderer = true
+  // console.log(animalWithMurderousIntent)
+}
+
+function murderRandomAnimal() {
+  // const potentialVictims = animals.filter(animal => !animal.isMurderer && animal.isAlive)
+  const potentialVictims = animals.filter(animal => animal.isMurderer == false && animal.isAlive == true)
+  console.log('potential victims:', potentialVictims);
+
+
+  const randomIndex = Math.floor(Math.random() * potentialVictims.length)
+
+  const victim = potentialVictims[randomIndex]
+
+  victim.isAlive = false
+  console.log(victim);
+  drawAnimals()
+
+  // TODO maybe refactor this
+  if (potentialVictims.length == 1) {
+    const murderer = animals.find(animal => animal.isMurderer == true)
+    window.alert(`${murderer.name} is a criminal mastermind, and they got away with it! ${murderer.emoji}`)
+    // NOTE hard stop
+    return
+  }
+
+  drawClueAboutMurderer()
+}
+
+function accuseAnimalOfMurder() {
+  console.log('accusing!');
+
+  // TODO allow user to type name as well
+  const emojiOfAccusedAnimal = window.prompt("WHO DUNNIT?")
+  console.log('you are accusing:', emojiOfAccusedAnimal);
+
+  const murderer = animals.find(animal => animal.isMurderer == true)
+
+  console.log('the murderer:', murderer);
+
+  if (murderer.emoji == emojiOfAccusedAnimal) {
+    window.alert(`${murderer.name} ${murderer.emoji} is going to jail! You are the best detective we've ever seen! Here is your medal 🥇`)
+  }
+  else {
+    murderRandomAnimal()
+  }
+
+}
+
+
 
 // ANCHOR run on page load
 

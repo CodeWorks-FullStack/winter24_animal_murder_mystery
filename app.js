@@ -125,16 +125,30 @@ function drawAnimals() {
 }
 
 function makeRandomAnimalMurderer() {
+  // NOTE finds a random number between -1 and the length of the animal array (should all be valid indexes to access within the array)
   const randomIndex = Math.floor(Math.random() * animals.length)
   console.log('random number:', randomIndex);
 
-
+  // NOTE pulls random object out of array
   const animalWithMurderousIntent = animals[randomIndex]
   animalWithMurderousIntent.isMurderer = true
   console.log(animalWithMurderousIntent)
 }
 
 
+function murderRandomAnimal() {
+  // const potentialVictims = animals.filter(animal => !animal.isMurderer)
+  const potentialVictims = animals.filter(animal => animal.isMurderer == false)
+  console.log('potential victims:', potentialVictims);
+
+  const randomIndex = Math.floor(Math.random() * potentialVictims.length)
+
+  const victim = potentialVictims[randomIndex]
+  victim.isAlive = false
+  console.log(victim);
+}
+
 // ANCHOR run on page load
 
+makeRandomAnimalMurderer()
 drawAnimals()

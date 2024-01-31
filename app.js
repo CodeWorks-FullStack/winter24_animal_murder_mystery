@@ -124,6 +124,16 @@ function drawAnimals() {
   animalLineupElement.innerText = animalEmojis
 }
 
+function makeRandomAnimalMurderer() {
+  const randomIndex = Math.floor(Math.random() * animals.length)
+  console.log('random number:', randomIndex);
+
+
+  const animalWithMurderousIntent = animals[randomIndex]
+  animalWithMurderousIntent.isMurderer = true
+  console.log(animalWithMurderousIntent)
+}
+
 
 // ANCHOR run on page load
 

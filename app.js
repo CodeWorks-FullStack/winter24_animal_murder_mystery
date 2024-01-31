@@ -147,12 +147,12 @@ function drawAnimals() {
 function makeRandomAnimalMurderer() {
   // NOTE finds a random number between -1 and the length of the animal array (should all be valid indexes to access within the array)
   const randomIndex = Math.floor(Math.random() * animals.length)
-  console.log('random number:', randomIndex);
+  // console.log('random number:', randomIndex);
 
   // NOTE pulls random object out of array
   const animalWithMurderousIntent = animals[randomIndex]
   animalWithMurderousIntent.isMurderer = true
-  console.log(animalWithMurderousIntent)
+  // console.log(animalWithMurderousIntent)
 }
 
 function murderRandomAnimal() {
@@ -174,6 +174,7 @@ function murderRandomAnimal() {
   victim.isAlive = false
   console.log(victim);
   drawAnimals()
+  drawClueAboutMurderer()
 }
 
 function accuseAnimalOfMurder() {
@@ -194,6 +195,44 @@ function accuseAnimalOfMurder() {
     murderRandomAnimal()
   }
 
+}
+
+function drawClueAboutMurderer() {
+  // NOTE gets random number between 0-5 (1,2,3,4)
+  const randomNumber = Math.ceil(Math.random() * 3)
+  console.log(randomNumber);
+
+  // if (randomNumber == 1) {
+  // }
+  // if (randomNumber == 2) {
+  // }
+  // if (randomNumber == 3) {
+  // }
+  // if (randomNumber == 4) {
+  // }
+  const murderer = animals.find(animal => animal.isMurderer == true)
+
+  let clue = ''
+
+  switch (randomNumber) {
+    case 1:
+      clue = `The murderer ${murderer.isMammal == true ? 'is' : 'is not'} a mammal`
+      break;
+
+    case 2:
+      clue = `The color of the murderer is ${murderer.color}`
+      break;
+
+    case 3:
+      clue = `The murderer is ${murderer.age > 12 ? 'older than' : 'younger than'} 12`
+      break;
+
+    default:
+      break;
+  }
+
+  const clueElement = document.getElementById('murdererClues')
+  clueElement.innerHTML += `<p>${clue}</p>`
 }
 
 // ANCHOR run on page load

@@ -113,11 +113,6 @@ const animals = [
 ]
 
 
-function drawAnimals() {
-  drawSuspects()
-  drawVictims()
-}
-
 function drawSuspects() {
   // NOTE create placeholder string
   let animalEmojis = ''
@@ -144,6 +139,11 @@ function drawVictims() {
   animalLineupElement.innerText = animalEmojis
 }
 
+function drawAnimals() {
+  drawSuspects()
+  drawVictims()
+}
+
 function makeRandomAnimalMurderer() {
   // NOTE finds a random number between -1 and the length of the animal array (should all be valid indexes to access within the array)
   const randomIndex = Math.floor(Math.random() * animals.length)
@@ -161,6 +161,7 @@ function murderRandomAnimal() {
   const potentialVictims = animals.filter(animal => animal.isMurderer == false && animal.isAlive == true)
   console.log('potential victims:', potentialVictims);
 
+  // TODO maybe refactor this
   if (potentialVictims.length == 0) {
     window.alert('GAME OVER')
     // NOTE hard stop
@@ -180,4 +181,6 @@ function murderRandomAnimal() {
 
 makeRandomAnimalMurderer()
 murderRandomAnimal()
+
+// NOTE murderRandomAnimal now calls this function, so we no longer need it to run on page load
 // drawAnimals()

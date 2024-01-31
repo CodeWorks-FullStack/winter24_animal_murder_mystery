@@ -199,7 +199,11 @@ function accuseAnimalOfMurder() {
 
 function drawClueAboutMurderer() {
   // NOTE gets random number between 0-5 (1,2,3,4)
-  const randomNumber = Math.ceil(Math.random() * 3)
+  // const randomNumber = Math.ceil(Math.random() * 4)
+
+  // NOTE gets random number between 0-7, which will hit our default more often in switch statement
+  const randomNumber = Math.ceil(Math.random() * 6)
+
   console.log(randomNumber);
 
   // if (randomNumber == 1) {
@@ -210,6 +214,7 @@ function drawClueAboutMurderer() {
   // }
   // if (randomNumber == 4) {
   // }
+
   const murderer = animals.find(animal => animal.isMurderer == true)
 
   let clue = ''
@@ -228,6 +233,10 @@ function drawClueAboutMurderer() {
       break;
 
     default:
+      const randomFoodIndex = Math.floor(Math.random() * murderer.favoriteFoods.length)
+      const randomFood = murderer.favoriteFoods[randomFoodIndex]
+      console.log('random food:', randomFood);
+      clue = `The murderer likes to eat ${randomFood}`
       break;
   }
 

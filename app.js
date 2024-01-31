@@ -110,6 +110,26 @@ const animals = [
     age: 1,
     favoriteFoods: ['leaves', 'grass', 'fruit', 'bugs', 'trash']
   },
+  {
+    name: 'Doctor Alligator',
+    emoji: '🐊',
+    isMurderer: false,
+    isAlive: true,
+    isMammal: false,
+    color: 'green',
+    age: 80,
+    favoriteFoods: ['meat', 'bugs', 'trash', 'gazelle', 'birds']
+  },
+  {
+    name: 'Max',
+    emoji: '🐕‍🦺',
+    isMurderer: false,
+    isAlive: true,
+    isMammal: true,
+    color: 'tan',
+    age: 6,
+    favoriteFoods: ['people']
+  },
 ]
 
 

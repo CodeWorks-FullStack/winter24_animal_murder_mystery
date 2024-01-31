@@ -114,16 +114,14 @@ const animals = [
 
 
 function drawAnimals() {
+  // NOTE create placeholder string
   let animalEmojis = ''
 
-  animals.forEach(animal => {
-    animalEmojis += animal.emoji
-    console.log('animal emojis:', animalEmojis);
-  })
+  // NOTE concat all animal emojis to placeholder string
+  animals.forEach(animal => animalEmojis += animal.emoji)
 
   const animalLineupElement = document.getElementById('animalLineup')
   animalLineupElement.innerText = animalEmojis
-
 }
 
 

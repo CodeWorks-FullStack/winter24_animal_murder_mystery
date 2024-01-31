@@ -236,7 +236,6 @@ function murderRandomAnimal() {
   console.log(victim);
   drawAnimals()
 
-  // TODO maybe refactor this
   if (potentialVictims.length == 1) {
     const murderer = findMurderer()
     window.alert(`${murderer.name} is a criminal mastermind, and they got away with it! ${murderer.emoji}`)

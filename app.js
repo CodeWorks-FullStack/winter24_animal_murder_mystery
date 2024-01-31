@@ -1,3 +1,4 @@
+
 const animals = [
   {
     name: 'Tiger',
@@ -111,3 +112,21 @@ const animals = [
   },
 ]
 
+
+function drawAnimals() {
+  let animalEmojis = ''
+
+  animals.forEach(animal => {
+    animalEmojis += animal.emoji
+    console.log('animal emojis:', animalEmojis);
+  })
+
+  const animalLineupElement = document.getElementById('animalLineup')
+  animalLineupElement.innerText = animalEmojis
+
+}
+
+
+// ANCHOR run on page load
+
+drawAnimals()

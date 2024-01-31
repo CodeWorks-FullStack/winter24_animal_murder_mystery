@@ -137,8 +137,8 @@ function makeRandomAnimalMurderer() {
 
 
 function murderRandomAnimal() {
-  // const potentialVictims = animals.filter(animal => !animal.isMurderer)
-  const potentialVictims = animals.filter(animal => animal.isMurderer == false)
+  // const potentialVictims = animals.filter(animal => !animal.isMurderer && animal.isAlive)
+  const potentialVictims = animals.filter(animal => animal.isMurderer == false && animal.isAlive == true)
   console.log('potential victims:', potentialVictims);
 
   const randomIndex = Math.floor(Math.random() * potentialVictims.length)

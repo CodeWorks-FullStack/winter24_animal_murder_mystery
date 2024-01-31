@@ -155,7 +155,6 @@ function makeRandomAnimalMurderer() {
   console.log(animalWithMurderousIntent)
 }
 
-
 function murderRandomAnimal() {
   // const potentialVictims = animals.filter(animal => !animal.isMurderer && animal.isAlive)
   const potentialVictims = animals.filter(animal => animal.isMurderer == false && animal.isAlive == true)
@@ -175,6 +174,10 @@ function murderRandomAnimal() {
   victim.isAlive = false
   console.log(victim);
   drawAnimals()
+}
+
+function accuseAnimalOfMurder() {
+  console.log('accusing!');
 }
 
 // ANCHOR run on page load
